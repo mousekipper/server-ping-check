@@ -1,0 +1,21 @@
+import time
+import socket
+
+
+
+def ping_server(target_ip):
+  
+    
+    try:
+        start_time = time.time()
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect((target_ip, 80))  
+        end_time = time.time()
+        response_time = (end_time - start_time) * 1000  
+        print(f"[+] {target_ip} 응답 시간: {response_time:.2f} ms")
+    except Exception as e:
+        print(f"[-] error: {e}")
+
+# 실행
+server_ip = "your_server_ip"
+ping_server(server_ip)
